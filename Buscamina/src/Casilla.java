@@ -13,6 +13,13 @@ public class Casilla {
     private int posColumna;
     private boolean mina;
 
+    public Casilla(int posFila, int posColumna) {
+        this.posFila = posFila;
+        this.posColumna = posColumna;
+    }
+    
+    
+
     public int getPosFila() {
         return posFila;
     }
