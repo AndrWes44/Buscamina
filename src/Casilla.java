@@ -58,5 +58,5 @@ public class Casilla {
     
     public void incrementarNumeroMinasAlrededor(){
         this.numMinasAlrededor++;
-    }
+    } 
 }
