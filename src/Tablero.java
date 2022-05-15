@@ -150,5 +150,5 @@ public class Tablero
         
     }
     
-   //ESTA ES UNA PRUEBA PARA ACTUALIZAR EL ARCHIVO 2 intento
+   //ESTA ES UNA PRUEBA PARA ACTUALIZAR EL ARCHIVO 2 intento aaaa
 }
