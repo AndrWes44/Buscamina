@@ -7,7 +7,7 @@
  *
  * @author LUIS
  */
-//si si si siddddd dddaaa seeee
+//si si si siddddd dddaaa seeee fdadf
 public class Casilla {
 
     private int posFila;

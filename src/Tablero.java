@@ -150,6 +150,5 @@ public class Tablero
         
     }
     
-    
-    
+   //ESTA ES UNA PRUEBA PARA ACTUALIZAR EL ARCHIVO 
 }
