@@ -7,7 +7,7 @@
  *
  * @author LUIS
  */
-//si si si siddddd dddaaa seeee fdadf
+
 public class Casilla {
 
     private int posFila;
@@ -58,5 +58,5 @@ public class Casilla {
     
     public void incrementarNumeroMinasAlrededor(){
         this.numMinasAlrededor++;
-    } 
+    }
 }
