@@ -2,116 +2,81 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
-
-//creamos la clase llamada Casilla
 public class Tablero{
-  Casilla[][] casillas;
-  
-  int numFilas;
-  int numColumnas;
-  int numMinas;
-  int numMinasAlrededor;
-  
-  private Consumer<List<Casilla>>eventoPartidaPerdida;
-  
-//creamos otra clase llamada Tablero
+    Casilla[][] casillas;
+    
+    int numFilas;
+    int numColumnas;
+    int numMinas;
+    
+    private Consumer<List<Casilla>> eventoPartidaPerdida;
+       
+
     public Tablero(int numFilas, int numColumnas, int numMinas) {
         this.numFilas = numFilas;
         this.numColumnas = numColumnas;
-        this.numMinas = numMinas;
-        this.iniciarCasillas(); 
+        this.numMinas=numMinas;
+        this.inicializarCasillas();
     }
-    //creamos otra clase y de una vez agregamos una matriz que se va a ocupar despues
-    //y se especifica lo que se va a ocupar en ella
-    public void iniciarCasillas() {
-        casillas = new Casilla[this.numFilas][this.numColumnas];
+    
+    public void inicializarCasillas(){
+        casillas=new Casilla[this.numFilas][this.numColumnas];
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[i].length; j++) {
-                casillas[i][j] = new Casilla(i, j);
-
+                casillas[i][j]=new Casilla(i, j);
             }
         }
-        generaMinas(); 
-    
-   }
-   
-    private void generaMinas() {
-        int minasGeneradas = 0;
-        while (minasGeneradas != numMinas) {
-            int posTmpFila = (int) (Math.random() * casillas.length);
-            int posTmpColum= (int) (Math.random() * casillas[0].length);
-            if (casillas[posTmpFila][posTmpColum].isMina()) {
-                casillas[posTmpFila][posTmpColum].setMina(true);
+        generarMinas();
+    }
+
+    private void generarMinas(){
+        int minasGeneradas=0;
+        while(minasGeneradas!=numMinas){
+            int posTmpFila=(int)(Math.random()*casillas.length);
+            int posTmpColumna=(int)(Math.random()*casillas[0].length);
+            if (!casillas[posTmpFila][posTmpColumna].isMina()){
+                casillas[posTmpFila][posTmpColumna].setMina(true);
                 minasGeneradas++;
-
             }
-
         }
-        //en este caso se van a actualizar el numero de minas totales antes 
-        //para que no haya ningun problema a la hora de ejecutar
         actualizarNumeroMinasAlrededor();
-        //luego se agragaran mas variables para continuar con el código 
-        
     }
     
-    //este metodo solo va a ser para ocuparlo en modo consola 
     public void imprimirTablero() {
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[i].length; j++) {
-               
-                System.out.print(casillas[i][j].isMina() ? "*" : "0");
+                System.out.print(casillas[i][j].isMina()?"*":"0");
             }
             System.out.println("");
         }
     }
-    
+
     private void imprimirPistas() {
         for (int i = 0; i < casillas.length; i++) {
-            for (int j = 0; j <  casillas[i].length; j++) {
-                
+            for (int j = 0; j < casillas[i].length; j++) {
                 System.out.print(casillas[i][j].getNumMinasAlrededor());
             }
             System.out.println("");
         }
     }
     
-    //private void actualizarNumeroMinasAlrededor(){
-        //for (int i = 0; i < casillas.length; i++) {
-            //for (int j = 0; j < casillas[i].length; j++) {
-                //if (casillas[i][j].isMina()){
-                    //List<Casilla> casillasAlrededor=obtenerCasillasAlrededor(i, j);
-                    //casillasAlrededor.forEach((c)->c.incrementarNumeroMinasAlrededor());
-                //}
-            //}
-        //}
-    //}
-
-
-    
-    
-    
-    //este sería para ir actualizando el numero de minas explotadas y sin explotar
-   private void actualizarNumeroMinasAlrededor()  {
-        for (int i = 0; i < casillas.length; i++)  {
+    private void actualizarNumeroMinasAlrededor(){
+        for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[i].length; j++) {
                 if (casillas[i][j].isMina()){
-                    List<Casilla> casillasAlrededor=obtenerCasillasAlrededor(i,j);
+                    List<Casilla> casillasAlrededor=obtenerCasillasAlrededor(i, j);
                     casillasAlrededor.forEach((c)->c.incrementarNumeroMinasAlrededor());
                 }
             }
         }
     }
- 
-   
-            //aqui vamos a agregar para ver la posicion de las minas
-            //para saber si tienen mina o no
-   
-   private List<Casilla> obtenerCasillasAlrededor(int posFila, int posColumna){
+    
+    private List<Casilla> obtenerCasillasAlrededor(int posFila, int posColumna){
         List<Casilla> listaCasillas=new LinkedList<>();
         for (int i = 0; i < 8; i++) {
             int tmpPosFila=posFila;
             int tmpPosColumna=posColumna;
-            switch(i){
+            switch(i){ 
                 case 0: tmpPosFila--;break; //Arriba
                 case 1: tmpPosFila--;tmpPosColumna++;break; //Arriba Derecha
                 case 2: tmpPosColumna++;break; //Derecha
@@ -121,7 +86,6 @@ public class Tablero{
                 case 6: tmpPosColumna--;break; //Izquierda
                 case 7: tmpPosFila--; tmpPosColumna--;break; //Izquierda Arriba
             }
-
             
             if (tmpPosFila>=0 && tmpPosFila<this.casillas.length
                     && tmpPosColumna>=0 && tmpPosColumna<this.casillas[0].length){
@@ -131,6 +95,9 @@ public class Tablero{
         }
         return listaCasillas;
     }
+    
+    
+     
     public void seleccionarCasilla(int posFila, int posColumna) {
         if (this.casillas[posFila][posColumna].isMina()) {
             List<Casilla> casillasConMinas = new LinkedList<>();
@@ -141,16 +108,23 @@ public class Tablero{
                     }
                 }
             }
-            eventoPartidaPerdida.accept(casillasConMinas);
+     eventoPartidaPerdida.accept(casillasConMinas);                  
+       }else if(this.casillas [posFila] [posColumna].getNumMinasAlrededor ()==0){
+           List<Casilla> casillasAlrededor=obtenerCasillasAlrededor(posFila,posColumna);
+           for (Casilla casilla: casillasAlrededor){
+             if (!casilla.isAbierta()){
+                 casilla.setAbierta(true);
+                   if (casilla.getNumMinasAlrededor()==0){
+                 seleccionarCasilla(casilla.getPosFila(),casilla.getPosColumna());
         }
+    }
+           }
+       
+       }
     }
     
     
-    
-
-    //ya esta funcionando esta funcion para poder ejecutarlo sin modo gráfico
-    
-    public static void main (String[] args)
+    public static void main(String[]args)
     {
         Tablero tablerro = new Tablero(5, 5, 5);
         tablerro.imprimirTablero(); 
@@ -159,9 +133,8 @@ public class Tablero{
         
         
     }
-    public void setEventoPartidaPerdida(Consumer<List<Casilla>> eventoPartidaPerdida){
+    public void setEventoPartidaPerdida(Consumer<List<Casilla>> eventoPartidaPerdida) {
         this.eventoPartidaPerdida = eventoPartidaPerdida;
     }
-    
-    
 }
+

@@ -1,26 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author LUIS
- */
-
 public class Casilla {
-
     private int posFila;
     private int posColumna;
     private boolean mina;
     private int numMinasAlrededor;
+    private boolean abierta;
 
     public Casilla(int posFila, int posColumna) {
         this.posFila = posFila;
         this.posColumna = posColumna;
     }
-    
-    
 
     public int getPosFila() {
         return posFila;
@@ -46,12 +34,10 @@ public class Casilla {
         this.mina = mina;
     }
 
-   
     public int getNumMinasAlrededor() {
         return numMinasAlrededor;
-    } 
+    }
 
-   
     public void setNumMinasAlrededor(int numMinasAlrededor) {
         this.numMinasAlrededor = numMinasAlrededor;
     }
@@ -59,4 +45,14 @@ public class Casilla {
     public void incrementarNumeroMinasAlrededor(){
         this.numMinasAlrededor++;
     }
+
+    public boolean isAbierta() {
+        return abierta;
+    }
+
+    public void setAbierta(boolean abierta) {
+        this.abierta = abierta;
+    }
+    
+    
 }
