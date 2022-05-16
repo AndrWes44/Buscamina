@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -11,7 +7,7 @@ import java.util.function.Consumer;
 
 /**
  *
- * @author LUIS
+ * @author Andres y David
  */
 
 public class formulariojuego extends javax.swing.JFrame {
