@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 /**
  *
  * @author Andres y David
- */
+ */ 
 
 public class formulariojuego extends javax.swing.JFrame {
      int numFilas=10;

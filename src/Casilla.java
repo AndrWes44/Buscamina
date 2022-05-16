@@ -51,7 +51,7 @@ public class Casilla {
     }
 
     public void setAbierta(boolean abierta) {
-        this.abierta = abierta; 
+        this.abierta = abierta;  
     }
     
     

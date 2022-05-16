@@ -7,7 +7,7 @@ public class Tablero{
     
     int numFilas;
     int numColumnas;
-    int numMinas;
+    int numMinas; 
     
     private Consumer<List<Casilla>> eventoPartidaPerdida;
        
