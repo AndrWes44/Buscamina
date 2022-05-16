@@ -58,7 +58,7 @@ public class Tablero{
             }
             System.out.println("");
         }
-    }
+    } 
     
     private void actualizarNumeroMinasAlrededor(){
         for (int i = 0; i < casillas.length; i++) {
@@ -96,7 +96,6 @@ public class Tablero{
         return listaCasillas;
     }
     
-    
      
     public void seleccionarCasilla(int posFila, int posColumna) {
         if (this.casillas[posFila][posColumna].isMina()) {
@@ -108,8 +107,11 @@ public class Tablero{
                     }
                 }
             }
+            
+           
      eventoPartidaPerdida.accept(casillasConMinas);                  
-       }else if(this.casillas [posFila] [posColumna].getNumMinasAlrededor ()==0){
+       }
+           else if(this.casillas [posFila] [posColumna].getNumMinasAlrededor ()==0){
            List<Casilla> casillasAlrededor=obtenerCasillasAlrededor(posFila,posColumna);
            for (Casilla casilla: casillasAlrededor){
              if (!casilla.isAbierta()){
@@ -121,6 +123,9 @@ public class Tablero{
            }
        
        }
+     
+
+    
     }
     
     
@@ -128,13 +133,11 @@ public class Tablero{
     {
         Tablero tablerro = new Tablero(5, 5, 5);
         tablerro.imprimirTablero(); 
-        System.out.println("---");
+        System.out.println("---"); 
         tablerro.imprimirPistas(); 
-        
         
     }
     public void setEventoPartidaPerdida(Consumer<List<Casilla>> eventoPartidaPerdida) {
         this.eventoPartidaPerdida = eventoPartidaPerdida;
     }
 }
-

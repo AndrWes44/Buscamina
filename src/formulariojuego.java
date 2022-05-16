@@ -13,7 +13,7 @@ import java.util.function.Consumer;
 public class formulariojuego extends javax.swing.JFrame {
      int numFilas=10;
      int numColumnas=10;
-     int numMinas=10;
+     int numMinas=10; 
 
      JButton[][] botonesTablero;
      Tablero tableroBuscaminas;
