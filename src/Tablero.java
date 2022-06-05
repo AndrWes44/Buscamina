@@ -10,6 +10,7 @@ public class Tablero{
     int numMinas; 
     
     private Consumer<List<Casilla>> eventoPartidaPerdida;
+    Consumer<Casilla>eventoCasillaAbierta;
        
 
     public Tablero(int numFilas, int numColumnas, int numMinas) {
@@ -98,6 +99,7 @@ public class Tablero{
     
      
     public void seleccionarCasilla(int posFila, int posColumna) {
+        eventoCasillaAbierta.accept(this.casillas[posFila][posColumna]);
         if (this.casillas[posFila][posColumna].isMina()) {
             List<Casilla> casillasConMinas = new LinkedList<>();
             for (int i = 0; i < casillas.length; i++) {
@@ -116,9 +118,8 @@ public class Tablero{
            for (Casilla casilla: casillasAlrededor){
              if (!casilla.isAbierta()){
                  casilla.setAbierta(true);
-                   if (casilla.getNumMinasAlrededor()==0){
                  seleccionarCasilla(casilla.getPosFila(),casilla.getPosColumna());
-        }
+        
     }
            }
        
@@ -139,5 +140,8 @@ public class Tablero{
     }
     public void setEventoPartidaPerdida(Consumer<List<Casilla>> eventoPartidaPerdida) {
         this.eventoPartidaPerdida = eventoPartidaPerdida;
+    }
+    public void setEventoCasillaAbierta(Consumer<Casilla>eventoCasilaAbierta) {
+        this.eventoCasillaAbierta= eventoCasillaAbierta;
     }
 }

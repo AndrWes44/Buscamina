@@ -37,7 +37,13 @@ public class formulariojuego extends javax.swing.JFrame {
             }
             
         });
-         tableroBuscaminas.imprimirTablero();
+                 tableroBuscaminas.setEventoCasillaAbierta(new Consumer<Casilla>() {
+            @Override
+            public void accept(Casilla t) {
+              botonesTablero[t.getPosFila()][t.getPosColumna()].setEnabled(false);
+              botonesTablero[t.getPosFila()][t.getPosColumna()].setText(t.getNumMinasAlrededor()==0?"":t.getNumMinasAlrededor()+"");
+            }
+        });
     }
     private void CargarControles(){
         
@@ -79,14 +85,16 @@ public class formulariojuego extends javax.swing.JFrame {
             }   
         }
     }
-    private void  btnClick(ActionEvent e) {
-        JButton  btn=(JButton)e.getSource();
+    private void btnClick(ActionEvent e) {
+        JButton btn=(JButton)e.getSource();
         String[] coordenada=btn.getName().split(",");
         int posFila=Integer.parseInt(coordenada[0]);
         int posColumna=Integer.parseInt(coordenada[1]);
         JOptionPane.showMessageDialog(rootPane, posFila+","+posColumna);
         tableroBuscaminas.seleccionarCasilla(posFila, posColumna);
+        
     }
+
     
 
     
