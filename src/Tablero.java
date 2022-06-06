@@ -144,12 +144,15 @@ public class Tablero{
     }
     
     
-    public static void main(String[]args)
+    public static void main(String[]args) 
     {
-        Tablero tablerro = new Tablero(5, 5, 5);
+        Tablero tablerro = new Tablero(5, 5, 5); 
         tablerro.imprimirTablero(); 
         System.out.println("---"); 
         tablerro.imprimirPistas(); 
+        formulariojuego MiObjeto = new formulariojuego();
+        MiObjeto.setVisible(true);
+        MiObjeto.show();
         
     }
     public void setEventoPartidaPerdida(Consumer<List<Casilla>> eventoPartidaPerdida) {

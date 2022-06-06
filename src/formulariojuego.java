@@ -11,9 +11,9 @@ import java.util.function.Consumer;
  */ 
 
 public class formulariojuego extends javax.swing.JFrame {
-     int numFilas=10;
-     int numColumnas=10;
-     int numMinas=10; 
+     int numFilas=10;         
+     int numColumnas=10;       
+     int numMinas=10;           
 
      JButton[][] botonesTablero;
      Tablero tableroBuscaminas;
@@ -199,9 +199,9 @@ public class formulariojuego extends javax.swing.JFrame {
 
     private void menuTamanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTamanoActionPerformed
          int num=Integer.parseInt(JOptionPane.showInputDialog("Digite tamaño de la matriz, n*n"));
-        this.numFilas=num;
-        this.numColumnas=num;
-        juegoNuevo(); 
+        this.numFilas=num;      
+        this.numColumnas=num;   
+        juegoNuevo();           
         
     }//GEN-LAST:event_menuTamanoActionPerformed
 
