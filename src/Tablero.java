@@ -152,7 +152,7 @@ public class Tablero{
         tablerro.imprimirPistas(); 
         //formulariojuego MiObjeto = new formulariojuego();
        // MiObjeto.setVisible(true);
-       // MiObjeto.show(); 
+       // MiObjeto.show();  
         
     }
     public void setEventoPartidaPerdida(Consumer<List<Casilla>> eventoPartidaPerdida) {
