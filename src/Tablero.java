@@ -150,9 +150,9 @@ public class Tablero{
         tablerro.imprimirTablero(); 
         System.out.println("---"); 
         tablerro.imprimirPistas(); 
-        formulariojuego MiObjeto = new formulariojuego();
-        MiObjeto.setVisible(true);
-        MiObjeto.show();
+        //formulariojuego MiObjeto = new formulariojuego();
+       // MiObjeto.setVisible(true);
+       // MiObjeto.show(); 
         
     }
     public void setEventoPartidaPerdida(Consumer<List<Casilla>> eventoPartidaPerdida) {
